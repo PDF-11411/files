@@ -1,0 +1,32 @@
+setup slave_machine
+
+useradd jenkins-slave
+sudo su - jenkins-slave
+ssh-keygen -t rsa -N "" -f /home/jenkins-slave/.ssh/id_rsa
+cd .ssh
+cat id_rsa.pub > authorized_keys
+chmod 700 authorized_keys
+
+
+configure in master_machine
+
+mkdir -p /var/lib/jenkins/.ssh
+cd /var/lib/jenkins/.ssh
+ssh-keyscan -H 172.31.7.120(slave-machine _ipaddress) >> /var/lib/jenkins/.ssh/known_hosts
+chown jenkins:jenkins known_hosts
+chmod 700 known_hosts
+
+slave machine
+
+cat id_rsa 
+
+ctrl+copy
+
+www :jenkins configuration page
+
+Remote root directory  /home/jenkins-slave
+
+private ip
+
+jenkins ---> ctrl+paste
+
